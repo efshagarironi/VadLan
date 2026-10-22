@@ -1143,6 +1143,7 @@ jobs:
               private int dropTargetX = 0;
               private FrameLayout listBox;           // the visible box of the list, inside the transparent list window
               private int listX, listY, listW, listH;   // final place and size of the list box
+              private boolean deferBlur = false;
               private boolean listFull = false;      // true while the window is wide (opening effects that overshoot)
               private ValueAnimator openAnim;
 
@@ -1157,7 +1158,7 @@ jobs:
                           int hide = Math.max(30, Math.min(70, sp.getInt("mock_hide", 68)));
                           int visible = Math.max(1, params.width * (100 - hide) / 100);
                           params.x = right ? sw - visible : -(params.width - visible);
-                          bubbleView.setAlpha(sp.getInt("mock_alpha", 90) / 100f * 0.55f);
+                          bubbleView.setAlpha(sp.getInt("mock_alpha", 90) / 100f);
                           try { wm.updateViewLayout(bubbleView, params); } catch (Exception e) {}
                       }
                   }
@@ -1247,7 +1248,6 @@ jobs:
               private WindowManager.LayoutParams listParams;
               private long lastOutside = 0, downAt = 0;
               private boolean fa() { return sp.getString("lang", "fa").equals("fa"); }
-
               private String tr(String f, String e) { return fa() ? f : e; }
 
               private void onBubbleTap() {
@@ -1405,7 +1405,7 @@ jobs:
                   final int fromX = params.x;
                   final int toX = right ? sw - visible : -(params.width - visible);
                   final float a0 = sp.getInt("mock_alpha", 90) / 100f;
-                  final float a1 = a0 * 0.55f;
+                  final float a1 = a0;
                   ValueAnimator va = ValueAnimator.ofFloat(0f, 1f);
                   va.setDuration(220);
                   va.setInterpolator(new DecelerateInterpolator());
@@ -1451,6 +1451,7 @@ jobs:
                   if (r == null || b == null || fx == 0) return;
                   final long ms = Math.max(100, Math.min(1500, sp.getInt("bub_fxms", 300)));
                   final boolean right = sp.getInt("mock_px", 70) > 50;
+                  b.setLayerType(View.LAYER_TYPE_HARDWARE, null);   // one stable layer: no colour flip when the effect ends
                   r.post(() -> {
                       if (listRoot != r || listBox != b) return;
                       int w = Math.max(1, listW), h = Math.max(1, listH);
@@ -1520,7 +1521,21 @@ jobs:
                   listBox.setScaleX(1f);
                   listBox.setScaleY(1f);
                   listBox.setAlpha(1f);
-                  if (listFull) applyListWindow(false, true);
+                  if (!listFull) return;
+                  // shrink the window in one step; the blur (glass) is added two frames later so nothing jumps
+                  final FrameLayout bx = listBox;
+                  deferBlur = true;
+                  applyListWindow(false, true);
+                  bx.postOnAnimation(() -> bx.postOnAnimation(() -> {
+                      deferBlur = false;
+                      if (listBox != bx || listRoot != r || listFull) return;
+                      boolean blur = sp.getBoolean("bub_lglass", false) && !sp.getBoolean("bub_sep", false) && Build.VERSION.SDK_INT >= 31;
+                      if (!blur) return;
+                      try {
+                          listParams.flags |= WindowManager.LayoutParams.FLAG_BLUR_BEHIND;
+                          wm.updateViewLayout(listRoot, listParams);
+                      } catch (Exception e) { }
+                  }));
               }
 
               private void cancelOpenAnim(FrameLayout box) {
@@ -1554,7 +1569,7 @@ jobs:
                       listParams.y = listY;
                       listParams.height = listH;
                       listParams.flags &= ~WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
-                      if (blur) listParams.flags |= WindowManager.LayoutParams.FLAG_BLUR_BEHIND;
+                      if (blur && !deferBlur) listParams.flags |= WindowManager.LayoutParams.FLAG_BLUR_BEHIND;
                   }
                   listBox.setLayoutParams(blp);
                   if (attached) {
@@ -2482,7 +2497,6 @@ jobs:
                       container.getChildAt(container.getChildCount() - 1).requestApplyInsets();
                   }
               }
-
               // top / bottom space of the home page: the same numbers are used for the first build and for the real insets
               int[] homeInsets(WindowInsets ins) {
                   if (ins == null) ins = getWindow().getDecorView().getRootWindowInsets();
@@ -6232,7 +6246,6 @@ jobs:
                   });
                   return wrap;
               }
-
               View menuRow(int color, String sym, String label, int fg, View.OnClickListener c) {
                   LinearLayout r = new LinearLayout(this);
                   r.setGravity(Gravity.CENTER_VERTICAL);
@@ -7354,7 +7367,7 @@ jobs:
                           v -> { page = BEHAVIOR; show(); }));
                   r.addView(row(0xFF29B6F6, "⚓", t("داک", "Dock"), null, 0, fg,
                           v -> { page = DOCK; show(); }));
-                  r.addView(row(0xFFFF5722, "🔮", t("ماک (حباب شناور)", "Mock (Floating Bubble)"), null, 0, fg,
+                  r.addView(row(0xFFFF5722, "🔮", t("حباب شناور", "Floating Bubble"), null, 0, fg,
                           v -> { page = MOCK; show(); }));
                   r.addView(row(0xFF8D6E63, "📁", t("تنظیمات پوشه", "Folder Settings"), null, 0, fg,
                           v -> { page = FOLDER; show(); }));
@@ -7503,7 +7516,7 @@ jobs:
                   r.addView(topBar(t("تنظیمات ماک", "Mock Settings"), fg));
 
                   boolean mockOn = sp.getBoolean("mock_on", false);
-                  r.addView(row(0xFFFF5722, "🔮", t("فعال‌سازی ماک", "Enable Mock"),
+                  r.addView(row(0xFFFF5722, "🔮", t("فعال‌سازی", "Enable"),
                           t("نمایش حباب شناور روی سایر برنامه‌ها", "Show floating bubble over other apps"),
                           mockOn ? 3 : 2, fg, v -> {
                       if (!mockOn) {
@@ -7530,7 +7543,7 @@ jobs:
                   };
 
                   // everything about what the bubble does and its list lives on its own page
-                  r.addView(row(0xFF00897B, "💬", t("حباب", "Bubble"),
+                  r.addView(row(0xFF00897B, "💬", t("عملکرد", "Actions"),
                           t("لانچر، عملکردها و ظاهر لیست حباب", "Launcher, actions and the look of the bubble list"),
                           0, fg, v -> {
                       page = BUB;
