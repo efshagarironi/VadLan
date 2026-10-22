@@ -191,35 +191,30 @@ jobs:
 
           cat > app/src/main/res/drawable/ic_bg.xml <<'EOF'
           <vector xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:aapt="http://schemas.android.com/aapt"
               android:width="108dp" android:height="108dp"
               android:viewportWidth="108" android:viewportHeight="108">
-              <path android:pathData="M0,0h108v108h-108z">
-                  <aapt:attr name="android:fillColor">
-                      <gradient android:startX="0" android:startY="0" android:endX="108" android:endY="108" android:type="linear">
-                          <item android:offset="0" android:color="#FF1A237E"/>
-                          <item android:offset="0.55" android:color="#FF3949AB"/>
-                          <item android:offset="1" android:color="#FF5C6BC0"/>
-                      </gradient>
-                  </aapt:attr>
-              </path>
+              <path android:fillColor="#FF101615" android:pathData="M0,0h108v108h-108z"/>
           </vector>
           EOF
 
           cat > app/src/main/res/drawable/ic_fg.xml <<'EOF'
           <vector xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:aapt="http://schemas.android.com/aapt"
               android:width="108dp" android:height="108dp"
               android:viewportWidth="108" android:viewportHeight="108">
-              <path android:fillColor="#FFFF5252" android:pathData="M32,28h6a4,4 0 0 1 4,4v6a4,4 0 0 1 -4,4h-6a4,4 0 0 1 -4,-4v-6a4,4 0 0 1 4,-4z"/>
-              <path android:fillColor="#FF40C4FF" android:pathData="M51,28h6a4,4 0 0 1 4,4v6a4,4 0 0 1 -4,4h-6a4,4 0 0 1 -4,-4v-6a4,4 0 0 1 4,-4z"/>
-              <path android:fillColor="#FFFFAB40" android:pathData="M70,28h6a4,4 0 0 1 4,4v6a4,4 0 0 1 -4,4h-6a4,4 0 0 1 -4,-4v-6a4,4 0 0 1 4,-4z"/>
-              <path android:fillColor="#FF69F0AE" android:pathData="M32,47h6a4,4 0 0 1 4,4v6a4,4 0 0 1 -4,4h-6a4,4 0 0 1 -4,-4v-6a4,4 0 0 1 4,-4z"/>
-              <path android:fillColor="#FFFFFFFF" android:pathData="M51,47h6a4,4 0 0 1 4,4v6a4,4 0 0 1 -4,4h-6a4,4 0 0 1 -4,-4v-6a4,4 0 0 1 4,-4z"/>
-              <path android:fillColor="#FF3D5AFE" android:pathData="M54,50.5a3.5,3.5 0 1 0 0.01,0z"/>
-              <path android:fillColor="#FFB388FF" android:pathData="M70,47h6a4,4 0 0 1 4,4v6a4,4 0 0 1 -4,4h-6a4,4 0 0 1 -4,-4v-6a4,4 0 0 1 4,-4z"/>
-              <path android:fillColor="#FFFF80AB" android:pathData="M32,66h6a4,4 0 0 1 4,4v6a4,4 0 0 1 -4,4h-6a4,4 0 0 1 -4,-4v-6a4,4 0 0 1 4,-4z"/>
-              <path android:fillColor="#FFFFE57F" android:pathData="M51,66h6a4,4 0 0 1 4,4v6a4,4 0 0 1 -4,4h-6a4,4 0 0 1 -4,-4v-6a4,4 0 0 1 4,-4z"/>
-              <path android:fillColor="#FF64FFDA" android:pathData="M70,66h6a4,4 0 0 1 4,4v6a4,4 0 0 1 -4,4h-6a4,4 0 0 1 -4,-4v-6a4,4 0 0 1 4,-4z"/>
+              <path android:pathData="M25,72 A29,29 0,0 0,83 72 A29,29 0,0 0,25 72">
+                  <aapt:attr name="android:fillColor"><gradient android:startX="30" android:startY="65" android:endX="78" android:endY="82" android:type="radial"><item android:offset="0" android:color="#99000000"/><item android:offset="0.65" android:color="#55000000"/><item android:offset="1" android:color="#00000000"/></gradient></aapt:attr>
+              </path>
+              <path android:fillColor="#FFC4A054" android:pathData="M54,13 A41,41 0,1 0,54,95 A41,41 0,1 0,54,13 M54,18 A36,36 0,1 1,54,90 A36,36 0,1 1,54,18" android:fillType="evenOdd"/>
+              <path android:fillColor="#FFE2B86A" android:pathData="M54,15 A39,39 0,0 1,88,34"/>
+              <path android:pathData="M54,19 A34,34 0,1 0,54,87 A34,34 0,1 0,54,19">
+                  <aapt:attr name="android:fillColor"><gradient android:startX="33" android:startY="27" android:endX="77" android:endY="80" android:type="radial"><item android:offset="0" android:color="#FFE4FFF7"/><item android:offset="0.32" android:color="#FF9FD8CA"/><item android:offset="0.68" android:color="#FF4F9588"/><item android:offset="1" android:color="#FF1E514A"/></gradient></aapt:attr>
+              </path>
+              <path android:fillColor="#44FFFFFF" android:pathData="M35,31 C42,22 55,20 64,24 C54,27 46,34 42,43 C37,41 34,37 35,31z"/>
+              <path android:fillColor="#88DCEBE8" android:pathData="M54,19 A34,34 0,1 0,54,87 A34,34 0,1 0,54,19 M54,22 A31,31 0,1 1,54,84 A31,31 0,1 1,54,22" android:fillType="evenOdd"/>
+              <path android:fillColor="#1B342F" android:pathData="M36,35h9l10,29 10,-29h9L58,76h-7z"/>
+              <path android:fillColor="#BFEADF" android:pathData="M35,33h9l10,29 10,-29h9L58,74h-7z"/>
+              <path android:fillColor="#66FFFFFF" android:pathData="M39,34h5l10,29 -2,4z"/>
           </vector>
           EOF
 
@@ -227,15 +222,10 @@ jobs:
           <vector xmlns:android="http://schemas.android.com/apk/res/android"
               android:width="108dp" android:height="108dp"
               android:viewportWidth="108" android:viewportHeight="108">
-              <path android:fillColor="#FF000000" android:pathData="M32,28h6a4,4 0 0 1 4,4v6a4,4 0 0 1 -4,4h-6a4,4 0 0 1 -4,-4v-6a4,4 0 0 1 4,-4z"/>
-              <path android:fillColor="#FF000000" android:pathData="M51,28h6a4,4 0 0 1 4,4v6a4,4 0 0 1 -4,4h-6a4,4 0 0 1 -4,-4v-6a4,4 0 0 1 4,-4z"/>
-              <path android:fillColor="#FF000000" android:pathData="M70,28h6a4,4 0 0 1 4,4v6a4,4 0 0 1 -4,4h-6a4,4 0 0 1 -4,-4v-6a4,4 0 0 1 4,-4z"/>
-              <path android:fillColor="#FF000000" android:pathData="M32,47h6a4,4 0 0 1 4,4v6a4,4 0 0 1 -4,4h-6a4,4 0 0 1 -4,-4v-6a4,4 0 0 1 4,-4z"/>
-              <path android:fillColor="#FF000000" android:fillType="evenOdd" android:pathData="M51,47h6a4,4 0 0 1 4,4v6a4,4 0 0 1 -4,4h-6a4,4 0 0 1 -4,-4v-6a4,4 0 0 1 4,-4z M54,50.5a3.5,3.5 0 1 0 0.01,0z"/>
-              <path android:fillColor="#FF000000" android:pathData="M70,47h6a4,4 0 0 1 4,4v6a4,4 0 0 1 -4,4h-6a4,4 0 0 1 -4,-4v-6a4,4 0 0 1 4,-4z"/>
-              <path android:fillColor="#FF000000" android:pathData="M32,66h6a4,4 0 0 1 4,4v6a4,4 0 0 1 -4,4h-6a4,4 0 0 1 -4,-4v-6a4,4 0 0 1 4,-4z"/>
-              <path android:fillColor="#FF000000" android:pathData="M51,66h6a4,4 0 0 1 4,4v6a4,4 0 0 1 -4,4h-6a4,4 0 0 1 -4,-4v-6a4,4 0 0 1 4,-4z"/>
-              <path android:fillColor="#FF000000" android:pathData="M70,66h6a4,4 0 0 1 4,4v6a4,4 0 0 1 -4,4h-6a4,4 0 0 1 -4,-4v-6a4,4 0 0 1 4,-4z"/>
+              <path android:fillColor="#FF000000" android:pathData="M25,72 A29,29 0,0 0,83 72 A29,29 0,0 0,25 72"/>
+              <path android:fillColor="#FF000000" android:pathData="M54,13 A41,41 0,1 0,54,95 A41,41 0,1 0,54,13 M54,18 A36,36 0,1 1,54,90 A36,36 0,1 1,54,18" android:fillType="evenOdd"/>
+              <path android:fillColor="#FF000000" android:pathData="M54,19 A34,34 0,1 0,54,87 A34,34 0,1 0,54,19"/>
+              <path android:fillColor="#FFFFFFFF" android:pathData="M35,33h9l10,29 10,-29h9L58,74h-7z"/>
           </vector>
           EOF
 
@@ -1158,7 +1148,7 @@ jobs:
                           int hide = Math.max(30, Math.min(70, sp.getInt("mock_hide", 68)));
                           int visible = Math.max(1, params.width * (100 - hide) / 100);
                           params.x = right ? sw - visible : -(params.width - visible);
-                          bubbleView.setAlpha(sp.getInt("mock_alpha", 90) / 100f);
+                          bubbleView.setAlpha(bubbleAlpha());
                           try { wm.updateViewLayout(bubbleView, params); } catch (Exception e) {}
                       }
                   }
@@ -1208,6 +1198,12 @@ jobs:
                   return START_STICKY;
               }
 
+              // Single source of truth for the floating bubble opacity.
+              // Every bubble render path uses the same configured value.
+              private float bubbleAlpha() {
+                  return Math.max(0.20f, Math.min(1.0f, sp.getInt("mock_alpha", 90) / 100f));
+              }
+
               private void applyPosition() {
                   if (params == null) return;
                   int sw = getResources().getDisplayMetrics().widthPixels;
@@ -1228,7 +1224,7 @@ jobs:
                   params.width = size;
                   params.height = size;
                   applyPosition();
-                  bubbleView.setAlpha(sp.getInt("mock_alpha", 90) / 100f);
+                  bubbleView.setAlpha(bubbleAlpha());
                   applyVisibility();
                   try { wm.updateViewLayout(bubbleView, params); } catch (Exception e) {}
                   handler.removeCallbacks(collapseRunnable);
@@ -1268,7 +1264,7 @@ jobs:
                   handler.removeCallbacks(collapseRunnable);
                   cancelBack();
                   endDrop(false);
-                  bubbleView.setAlpha(sp.getInt("mock_alpha", 90) / 100f);
+                  bubbleView.setAlpha(bubbleAlpha());
 
                   listRoot = new FrameLayout(this) {
                       @Override
@@ -1314,7 +1310,9 @@ jobs:
                   if (sp.getInt("bub_fx", 0) != 0) listBox.setAlpha(0f);   // the opening effect shows it
                   layoutList(true);
                   playOpen();
-                  startDrop();
+                  // The bubble itself is animated only by the Drop effect.
+                  // Running the bubble animation for Bounce/other effects caused a second visible motion.
+                  if (sp.getInt("bub_fx", 0) == 6) startDrop();
               }
 
               // ---------- the drop effect: the bubble drips out of the screen edge, stretches, and lands above the list ----------
@@ -1331,7 +1329,7 @@ jobs:
                   dv.startCx = right ? sw - r * 0.1f : r * 0.1f;
                   dv.ax = right ? sw + r * 0.6f : -r * 0.6f;
                   dv.endCx = dropTargetX + S / 2f;
-                  dv.setAlpha(sp.getInt("mock_alpha", 90) / 100f);
+                  dv.setAlpha(bubbleAlpha());
                   WindowManager.LayoutParams lp = new WindowManager.LayoutParams(
                           sw, sh, WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
                           WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
@@ -1404,7 +1402,7 @@ jobs:
                   int visible = Math.max(1, params.width * (100 - hide) / 100);
                   final int fromX = params.x;
                   final int toX = right ? sw - visible : -(params.width - visible);
-                  final float a0 = sp.getInt("mock_alpha", 90) / 100f;
+                  final float a0 = bubbleAlpha();
                   final float a1 = a0;
                   ValueAnimator va = ValueAnimator.ofFloat(0f, 1f);
                   va.setDuration(220);
@@ -1472,7 +1470,7 @@ jobs:
                           b.setPivotY(0);
                           b.setScaleX(0.5f);
                           b.setScaleY(0.5f);
-                          an.scaleX(1f).scaleY(1f).alpha(1f).setInterpolator(new OvershootInterpolator(2.2f));
+                          an.scaleX(1f).scaleY(1f).alpha(1f).setInterpolator(new OvershootInterpolator(1.05f));
                           an.withEndAction(() -> endFull(r));   // the wide window lets the bounce grow past the final size without being cut
                       } else if (fx == 5) {
                           b.setTranslationY(-(h + dpToPx(24)));
@@ -1490,20 +1488,24 @@ jobs:
                   final int sw = getResources().getDisplayMetrics().widthPixels;
                   final float w = Math.max(1, listW);
                   final float tx0 = right ? (sw - listX - w * 0.15f) : -(listX + w * 0.85f);
-                  final OvershootInterpolator ov = new OvershootInterpolator(1.6f);
+                  final DecelerateInterpolator ease = new DecelerateInterpolator(1.7f);
                   b.setPivotX(right ? w : 0);
                   b.setPivotY(0);
                   b.setTranslationX(tx0);
+                  b.setTranslationY(0f);
+                  b.setScaleX(1f);
+                  b.setScaleY(1f);
                   b.setAlpha(1f);
                   ValueAnimator va = ValueAnimator.ofFloat(0f, 1f);
                   va.setDuration(dropMs());
+                  va.setInterpolator(ease);
                   va.addUpdateListener(a -> {
                       float t = (Float) a.getAnimatedValue();
-                      float pos = ov.getInterpolation(t);
-                      float st = ((float) Math.sin(Math.PI * t) * 0.85f + 0.1f * (float) Math.sin(3 * Math.PI * t) * t) * 0.5f;
-                      b.setTranslationX(tx0 * (1f - pos));
-                      b.setScaleX(1f + st);
-                      b.setScaleY(1f / (1f + st * 0.5f));
+                      // One continuous approach: no overshoot/reversal, with a small liquid stretch.
+                      float stretch = (float) Math.sin(Math.PI * t) * 0.16f;
+                      b.setTranslationX(tx0 * (1f - t));
+                      b.setScaleX(1f + stretch);
+                      b.setScaleY(1f - stretch * 0.35f);
                   });
                   va.addListener(new AnimatorListenerAdapter() {
                       @Override
@@ -1542,7 +1544,14 @@ jobs:
                   ValueAnimator a = openAnim;
                   openAnim = null;
                   if (a != null) { a.removeAllListeners(); a.cancel(); }
-                  if (box != null) box.animate().cancel();
+                  if (box != null) {
+                      box.animate().cancel();
+                      box.setTranslationX(0f);
+                      box.setTranslationY(0f);
+                      box.setScaleX(1f);
+                      box.setScaleY(1f);
+                      box.setAlpha(1f);
+                  }
               }
 
               // full = true: a window as wide as the screen (and a bit taller), untouchable, so that no part of an effect is cut at the window edge
@@ -1791,7 +1800,7 @@ jobs:
                           BubbleArt.draw(canvas, w * 0.5f, h * 0.44f, w * 0.36f, true);
                       }
                   };
-                  bubbleView.setAlpha(sp.getInt("mock_alpha", 90) / 100f);
+                  bubbleView.setAlpha(bubbleAlpha());
 
                   bubbleView.setOnTouchListener(new View.OnTouchListener() {
                       int ix, iy;
@@ -1813,7 +1822,7 @@ jobs:
                                       // this very touch just closed the list: the bubble folds straight into the side
                                       collapseNow();
                                   } else {
-                                      bubbleView.setAlpha(sp.getInt("mock_alpha", 90) / 100f);
+                                      bubbleView.setAlpha(bubbleAlpha());
                                       cancelBack();
                                       if (listRoot == null && dropView == null) {
                                           applyPosition();
@@ -1836,7 +1845,7 @@ jobs:
                                       handler.removeCallbacks(longRun);
                                       if (listRoot != null) { closeList(); cancelBack(); }
                                       cancelBack();
-                                      bubbleView.setAlpha(sp.getInt("mock_alpha", 90) / 100f);
+                                      bubbleView.setAlpha(bubbleAlpha());
                                   }
                                   if (moved) {
                                       params.x = ix + (int) dx;
@@ -7513,7 +7522,7 @@ jobs:
 
               View mockPage(int fg) {
                   LinearLayout r = vbox();
-                  r.addView(topBar(t("تنظیمات ماک", "Mock Settings"), fg));
+                  r.addView(topBar(t("تنظیمات حباب شناور", "Floating Bubble Settings"), fg));
 
                   boolean mockOn = sp.getBoolean("mock_on", false);
                   r.addView(row(0xFFFF5722, "🔮", t("فعال‌سازی", "Enable"),
@@ -8745,3 +8754,4 @@ jobs:
         with:
           name: app-debug
           path: app/build/outputs/apk/debug/app-debug.apk
+
